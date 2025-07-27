@@ -14,8 +14,11 @@ load_dotenv()
 # SQLite 파일 경로에서 디렉터리 자동 생성
 DATABASE_URL = os.getenv('DATABASE_URL')
 if DATABASE_URL and DATABASE_URL.startswith('sqlite:///'):
+    # 데이터를 저장할 파일 경로에서 'sqlite:///' 접두사를 제거
     db_path = DATABASE_URL.replace('sqlite:///', '')
+    # 디렉터리 경로만 추출
     folder = os.path.dirname(db_path)
+    # 디렉터리가 없으면 생성
     if folder and not os.path.exists(folder):
         os.makedirs(folder, exist_ok=True)
 
