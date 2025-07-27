@@ -12,6 +12,7 @@ from datetime import datetime
 load_dotenv()
 
 DATABASE_URL = os.getenv('DATABASE_URL')
+print(f"DEBUG: DATABASE_URL is set to: {DATABASE_URL}")
 if DATABASE_URL and DATABASE_URL.startswith('sqlite:///'):
     db_path = DATABASE_URL.replace('sqlite:///', '')
     folder = os.path.dirname(db_path)
